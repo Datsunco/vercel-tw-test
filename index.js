@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
 const path = require('path')
-const pg = require('./pgdb')
+const pg = require('./db')
 const router = require('./pgRoutes/index')
 
 

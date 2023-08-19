@@ -1,4 +1,4 @@
-const postgre = require('../pgdb')
+const postgre = require('../db')
 const orderController = {
     getAll: async(req, res) => {
         try {
