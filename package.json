@@ -1,0 +1,33 @@
+{
+  "name": "tw-2-web-app-vercel-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "vercel": "nodemon pgindex.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Transparent-World/tw-2-web-app-vercel-server.git"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Transparent-World/tw-2-web-app-vercel-server/issues"
+  },
+  "homepage": "https://github.com/Transparent-World/tw-2-web-app-vercel-server#readme"
+}
