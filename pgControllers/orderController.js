@@ -12,7 +12,7 @@ const orderController = {
         try {
             const {userid} = req.query
 
-            const { rows } = await postgre.query("select * from orders where user_id = $1", [userid])
+            const { rows } = await postgre.query("select * from orders where userid = $1", [userid])
 
             if (rows[0]) {
                 return res.json({msg: "OK", data: rows})

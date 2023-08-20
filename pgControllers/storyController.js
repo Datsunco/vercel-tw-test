@@ -14,9 +14,10 @@ const storyController = {
         try {
             const {link, status, imglink} = req.body;
 
-            const sql = 'INSERT INTO stories(link, status, imglink) VALUES($1, $2, $3) RETURNING *'
+            const sql = 'INSERT INTO stories(link, img, status) VALUES($1, $2, $3) RETURNING *'
+            
 
-            const { rows } = await postgre.query(sql, [link, status, imglink])
+            const { rows } = await postgre.query(sql, [link, imglink, status])
 
             res.json({msg: "OK", data: rows[0]})
 
