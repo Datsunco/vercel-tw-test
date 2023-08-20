@@ -1,8 +1,8 @@
 const Router = require('express')
-const OrderController = require('../pgControllers/orderController')
+const orderController = require('../pgControllers/orderController')
 const router = new Router()
 
-router.post('/create', OrderController.create)
-router.get('/get', OrderController.getAll)
+router.post('/create', orderController.create)
+router.get('/get', orderController.getById)
 
 module.exports  = router

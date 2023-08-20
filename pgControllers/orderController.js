@@ -10,7 +10,9 @@ const orderController = {
     },
     getById: async(req, res) => {
         try {
-            const { rows } = await postgre.query("select * from books where book_id = $1", [req.params.id])
+            const {userid} = req.query
+
+            const { rows } = await postgre.query("select * from orders where user_id = $1", [userid])
 
             if (rows[0]) {
                 return res.json({msg: "OK", data: rows})
