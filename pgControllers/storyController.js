@@ -12,14 +12,11 @@ const storyController = {
     },
     create: async(req, res) => {
         try {
-            const {link, status} = req.body;
-            const {img} = req.files;
-            let filename = uuid.v4() + ".jpg"
-            img.mv(path.resolve(__dirname, '..', 'static', filename))
+            const {link, status, imglink} = req.body;
 
             const sql = 'INSERT INTO stories(link, status, filename) VALUES($1, $2, $3) RETURNING *'
 
-            const { rows } = await postgre.query(sql, [link, status, filename])
+            const { rows } = await postgre.query(sql, [link, status, imglink])
 
             res.json({msg: "OK", data: rows[0]})
 
