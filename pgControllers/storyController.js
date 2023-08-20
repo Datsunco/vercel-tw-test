@@ -17,7 +17,7 @@ const storyController = {
             let filename = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', filename))
 
-            const sql = 'INSERT INTO orders(link, status, filename) VALUES($1, $2, $3) RETURNING *'
+            const sql = 'INSERT INTO stories(link, status, filename) VALUES($1, $2, $3) RETURNING *'
 
             const { rows } = await postgre.query(sql, [link, status, filename])
 
