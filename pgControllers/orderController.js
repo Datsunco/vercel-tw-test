@@ -42,11 +42,7 @@ const orderController = {
     create: async(req, res) => {
         try {
             const {userid, lon, lat, address, radius} = req.body
-
-            res.writeHead(200, {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Headers": "X-Foo"
-             });
+            res.setHeader("Access-Control-Allow-Origin", "*");
 
             const sql = 'INSERT INTO orders(userid, lon, lat, address, radius) VALUES($1, $2, $3, $4, $5) RETURNING *'
 
