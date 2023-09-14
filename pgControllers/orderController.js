@@ -42,13 +42,14 @@ const orderController = {
     create: async(req, res) => {
         try {
             const {userid, lon, lat, address, radius} = req.body
+            console.log(req)
 
-            /*if (req.method == 'OPTIONS') { // Handle preflight
+            if (req.method == 'OPTIONS') { // Handle preflight
                 res.writeHead(200, {
                    "Access-Control-Allow-Origin": "*",
                    "Access-Control-Allow-Headers": "X-Foo"
                 });
-            } else {                           // Handle actual requests
+            } /*else {                           // Handle actual requests
                 res.writeHead(204, {
                   "Access-Control-Allow-Origin": "*"
                 });
