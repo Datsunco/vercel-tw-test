@@ -43,7 +43,7 @@ const orderController = {
         try {
             const {userid, lon, lat, address, radius} = req.body
 
-            if (req.method == 'OPTIONS') { // Handle preflight
+            /*if (req.method == 'OPTIONS') { // Handle preflight
                 res.writeHead(200, {
                    "Access-Control-Allow-Origin": "*",
                    "Access-Control-Allow-Headers": "X-Foo"
@@ -52,12 +52,13 @@ const orderController = {
                 res.writeHead(204, {
                   "Access-Control-Allow-Origin": "*"
                 });
-            }
+            }*/
 
             const sql = 'INSERT INTO orders(userid, lon, lat, address, radius) VALUES($1, $2, $3, $4, $5) RETURNING *'
 
             const { rows } = await postgre.query(sql, [userid, lon, lat, address, radius])
 
+            //res.end()
             res.json({msg: "OK", data: rows[0]})
 
         } catch (error) {
