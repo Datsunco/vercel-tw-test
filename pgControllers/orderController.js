@@ -42,18 +42,13 @@ const orderController = {
     create: async(req, res) => {
         try {
             const {userid, lon, lat, address, radius} = req.body
-            console.log(req)
 
             if (req.method == 'OPTIONS') { // Handle preflight
                 res.writeHead(200, {
                    "Access-Control-Allow-Origin": "*",
                    "Access-Control-Allow-Headers": "X-Foo"
                 });
-            } /*else {                           // Handle actual requests
-                res.writeHead(204, {
-                  "Access-Control-Allow-Origin": "*"
-                });
-            }*/
+            } 
 
             const sql = 'INSERT INTO orders(userid, lon, lat, address, radius) VALUES($1, $2, $3, $4, $5) RETURNING *'
 
@@ -63,6 +58,7 @@ const orderController = {
             res.json({msg: "OK", data: rows[0]})
 
         } catch (error) {
+            console.log(error)
             res.json({msg: error.msg})
         }
     },
