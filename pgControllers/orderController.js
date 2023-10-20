@@ -97,7 +97,7 @@ const orderController = {
                 body: formData,
             }
 
-            const { data } = await axios.post('https://api.telegram.org/bot6569140117:AAEpsZrhnE-1LjXRn04bkVqVUzSs_SSEAPs/sendDocument', {params: params})
+            const { data } = await fetch('https://api.telegram.org/bot6569140117:AAEpsZrhnE-1LjXRn04bkVqVUzSs_SSEAPs/sendDocument',  params)
             console.log(data)
 
 
