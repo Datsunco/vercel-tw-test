@@ -90,12 +90,14 @@ const orderController = {
             formData.append("document", new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' }), filename);
             formData.append("caption", `Адрес: ${address} \nКоординаты: ${lat}, ${lon}`);
 
+            console.log(formData)
+
             var params = {
                 method: "POST",
                 body: formData,
             }
 
-            const { data } = await axios.post('https://api.telegram.org/bot6569140117:AAEpsZrhnE-1LjXRn04bkVqVUzSs_SSEAPs/sendDocument', params)
+            const { data } = await axios.post('https://api.telegram.org/bot6569140117:AAEpsZrhnE-1LjXRn04bkVqVUzSs_SSEAPs/sendDocument', {params: params})
             console.log(data)
 
 
