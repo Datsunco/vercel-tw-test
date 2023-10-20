@@ -82,11 +82,11 @@ const orderController = {
 
             const formData = new FormData();
 
-            const filename = address + ' ' + center.lat + ' ' + center.lon + '.kml'
+            const filename = address + ' ' + lat + ' ' + lon + '.kml'
 
             formData.append("chat_id", -1001919128416);
             formData.append("document", new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' }), filename);
-            formData.append("caption", `Адрес: ${address} \nКоординаты: ${center.lat}, ${center.lng}`);
+            formData.append("caption", `Адрес: ${address} \nКоординаты: ${lat}, ${lon}`);
 
             var params = {
                 method: "POST",
