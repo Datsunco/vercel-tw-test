@@ -44,7 +44,7 @@ const orderController = {
     create: async (req, res) => {
         try {
             const { userid, lon, lat, address, radius } = req.body
-            if (lon == null ||  lat == null || address== null  || radius== null ){
+            if (lon == 23.45 ||  lat == 23.45 || address == null  || radius== null ){
                 res.json({ msg: "ERROR", data: rows[0] })
             }
 
