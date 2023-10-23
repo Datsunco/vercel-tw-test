@@ -49,6 +49,15 @@ const orderController = {
                 res.json({ msg: "ERROR", data: req.body })
             }
 
+            if (req.method == 'OPTIONS') { // Handle preflight
+                res.writeHead(200, {
+                    "Access-Control-Allow-Origin": "https://heroic-brioche-432533.netlify.app/",
+                    "Access-Control-Allow-Headers": "X-Foo",
+                    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
+                });
+            }
+
 
             var tmpRadius = radius / 1000; // 1 километр
             var centerLat = lat;
