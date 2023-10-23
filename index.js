@@ -11,10 +11,7 @@ const POPT = process.env.PORT || 5000
 const app = express()
 
 
-app.use(cors({
-    credentials: true,
-    origin: 'https://heroic-brioche-432533.netlify.app/'
-}))
+app.use(cors())
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(fileUpload({}))
