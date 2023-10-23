@@ -1,10 +1,11 @@
 const Router = require('express')
 const orderController = require('../pgControllers/orderController')
+const authMiddleware = require('../middleware/headermiddleware')
 const router = new Router()
 
-router.post('/create', orderController.create)
-router.get('/getAll', orderController.getByUserId)
-router.get('/getOne', orderController.getById)
-router.options('/create', orderController.create)
+router.post('/create', authMiddleware,orderController.create)
+router.get('/getAll', authMiddleware, orderController.getByUserId)
+router.get('/getOne', authMiddleware, orderController.getById)
+router.options('/create', authMiddleware, orderController.create)
 
 module.exports  = router
