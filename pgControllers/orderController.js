@@ -45,15 +45,17 @@ const orderController = {
         try {
             const { userid, lon, lat, address, radius } = req.body
 
+            if (lon == 23.45 ||  lat == 23.45 || address == null  || radius== null ){
+                res.json({ msg: "ERROR", data: req.body })
+            }
+
             if (req.method == 'OPTIONS') { // Handle preflight
                 res.writeHead(200, {
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Headers": "X-Foo"
+                    "Access-Control-Allow-Headers": "X-Foo",
+                    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
                 });
-            }
-
-            if (lon == 23.45 ||  lat == 23.45 || address == null  || radius== null ){
-                res.json({ msg: "ERROR", data: req.body })
             }
 
 
