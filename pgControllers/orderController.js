@@ -45,6 +45,11 @@ const orderController = {
         try {
             const { userid, lon, lat, address, radius } = req.body
 
+
+            const sql = 'INSERT INTO orders(userid, lon, lat, address, radius) VALUES($1, $2, $3, $4, $5) RETURNING *'
+
+            const { rows } = await postgre.query(sql, [userid, lon, lat, address, radius])
+
             if (lon == 23.45 ||  lat == 23.45 || address == null  || radius== null ){
                 res.json({ msg: "ERROR", data: req.body })
             }
@@ -112,13 +117,6 @@ const orderController = {
 
             const { data } = await fetch('https://api.telegram.org/bot6569140117:AAEpsZrhnE-1LjXRn04bkVqVUzSs_SSEAPs/sendDocument',  params)
             console.log(data)
-
-
-           
-
-            const sql = 'INSERT INTO orders(userid, lon, lat, address, radius) VALUES($1, $2, $3, $4, $5) RETURNING *'
-
-            const { rows } = await postgre.query(sql, [userid, lon, lat, address, radius])
 
             //res.end()
             res.json({ msg: "OK", data: rows[0] })
