@@ -14,6 +14,13 @@ const orderController = {
         try {
             const { userid } = req.query
 
+            res.writeHead(200, {
+                "Access-Control-Allow-Origin": "https://heroic-brioche-432533.netlify.app/",
+                "Access-Control-Allow-Headers": "X-Foo",
+                "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
+            });
+
             const { rows } = await postgre.query("select * from orders where userid = $1", [userid])
 
             if (rows[0]) {
@@ -51,7 +58,7 @@ const orderController = {
 
             if (req.method == 'OPTIONS') { // Handle preflight
                 res.writeHead(200, {
-                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": "https://heroic-brioche-432533.netlify.app/",
                     "Access-Control-Allow-Headers": "X-Foo",
                     "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
                     "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
