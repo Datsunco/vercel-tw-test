@@ -44,8 +44,16 @@ const orderController = {
     create: async (req, res) => {
         try {
             const { userid, lon, lat, address, radius } = req.body
+
+            if (req.method == 'OPTIONS') { // Handle preflight
+                res.writeHead(200, {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "X-Foo"
+                });
+            }
+
             if (lon == 23.45 ||  lat == 23.45 || address == null  || radius== null ){
-                res.json({ msg: "ERROR", data: rows[0] })
+                res.json({ msg: "ERROR", data: req.body })
             }
 
 
@@ -104,12 +112,7 @@ const orderController = {
             console.log(data)
 
 
-            if (req.method == 'OPTIONS') { // Handle preflight
-                res.writeHead(200, {
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Headers": "X-Foo"
-                });
-            }
+           
 
             const sql = 'INSERT INTO orders(userid, lon, lat, address, radius) VALUES($1, $2, $3, $4, $5) RETURNING *'
 
