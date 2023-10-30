@@ -47,9 +47,11 @@ const orderController = {
 
 
             const sql = 'INSERT INTO orders(userid, lon, lat, address, radius) VALUES($1, $2, $3, $4, $5) RETURNING *'
-            console.log(sql)
+            
 
             const { rows } = await postgre.query(sql, [userid, lon, lat, address, radius])
+
+            console.log(rows)
 
             if (lon == 23.45 ||  lat == 23.45 || address == null  || radius== null ){
                 res.json({ msg: "ERROR", data: req.body })
@@ -108,8 +110,6 @@ const orderController = {
             formData.append("chat_id", -1001919128416);
             formData.append("document", new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' }), filename);
             formData.append("caption", `Адрес: ${address} \nКоординаты: ${lat}, ${lon}`);
-
-            console.log(formData)
 
             var params = {
                 method: "POST",
